@@ -68,7 +68,7 @@ function sendVerificationEmail(user, req, res, callback) {
 function signInUser(req, res, error, user){
   if (error) { return res.status(500).json({message: error}); }
   if (!user) { return res.status(401).json({message: 'Failed to sign in!'}); }
-  
+
   sessionHelper.setCurrentUserId(req, res, user.id);
 
   res.status(200).json(user);
@@ -102,18 +102,22 @@ router.post('/signup', function(req, res, next) {
     resetPasswordExpires: null
   })
   .then(function(user) {
-    sendVerificationEmail(user, req, res, function(err) {
-      if (err) {
-        console.error('Failed to send verification email.', err);
-        return res.status(400).send({
-          message: 'Failed to send verification email.'
+    // currently scaffold doesn't ask for email config
+    // sendVerificationEmail(user, req, res, function(err) {
+    //   if (err) {
+    //     console.error('Failed to send verification email.', err);
+    //     return res.status(400).send({
+    //       message: 'Failed to send verification email.'
+    //     });
+    //   } else {
+    //     res.send({
+    //       message: 'Verification email has been sent to the provided email with further instructions.'
+    //     });
+    //   }
+    // });
+      res.send({
+          message: 'Signup Successful! You can login with your credentials now.'
         });
-      } else {
-        res.send({
-          message: 'Verification email has been sent to the provided email with further instructions.'
-        });
-      }
-    });
   })
   .catch(function(err) {
     console.error('Failed to create a new user');

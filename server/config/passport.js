@@ -34,10 +34,10 @@ module.exports = function(app){
         if (!user.validPassword(password)) {
           return done('Invalid Password', false);
         }
-
-        if (!user.is_verified) {
-          return done('Email Not Verified Yet.', false);
-        }
+        // currently email config is not asked while scaffold
+        // if (!user.is_verified) {
+        //   return done('Email Not Verified Yet.', false);
+        // }
 
         return done(null, user);
       });
