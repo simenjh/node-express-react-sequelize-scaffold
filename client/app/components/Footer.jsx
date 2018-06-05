@@ -12,7 +12,7 @@ var Footer = React.createClass({
           </div>
           <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4">
             <h2>Info</h2>
-            <p>Made with <i className="fa fa-heart" aria-hidden="true"></i> at Crowdbotics by <a href="https://github.com/batu89" target="_blank">@batu89</a> <i className="fa fa-github" aria-hidden="true"></i></p>
+            <p>Made with <i className="fa fa-heart" aria-hidden="true"></i> at <a href="https://crowdbotics.com" target="_blank">Crowdbotics</a></p>
           </div>
         </div>
       </div>
