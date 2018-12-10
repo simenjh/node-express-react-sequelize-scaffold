@@ -53,6 +53,10 @@ var config = {
         // shrink bundle size
         // NODE_ENV: JSON.stringify("production")
       }
+    }),
+    new UglifyJSPlugin({
+      sourceMap: true,
+      uglifyOptions: { ecma: 8 }
     })
   ]
 };
