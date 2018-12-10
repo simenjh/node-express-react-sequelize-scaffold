@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
 var BUILD_DIR = path.resolve(__dirname, './client/public/build');
@@ -21,11 +22,11 @@ var config = {
     loaders: [{
       test: /\.jsx?/,
       include: APP_DIR,
-      loader: 'babel'
+      loader: 'babel-loader'
     }, {
       test: /\.scss$/,
       include: STYLE_DIR,
-      loader: ExtractTextPlugin.extract('css!sass')
+      loader: ExtractTextPlugin.extract('css-loader!sass-loader')
     }, {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: "url?limit=10000&mimetype=application/font-woff"
@@ -34,12 +35,15 @@ var config = {
       loader: "file"
     }]
   },
-  alias: {
-    'react$': path.join(__dirname, 'node_modules', 'react', 'dist', 'react.min.js'),
-    'react-dom$': path.join(__dirname, 'node_modules', 'react-dom', 'dist', 'react-dom.min.js')
+  resolve: {
+    alias: {
+      'react$': path.join(__dirname, 'node_modules', 'react', 'dist', 'react.min.js'),
+      'react-dom$': path.join(__dirname, 'node_modules', 'react-dom', 'dist', 'react-dom.min.js')
+    }
   },
   plugins: [
-    new ExtractTextPlugin('style.css', {
+    new ExtractTextPlugin({
+      filename: 'style.css',
       allChunks: true
     }),
     new webpack.DefinePlugin({
