@@ -24,7 +24,7 @@
     "chalk": "^2.4.1",
     "consolidate": "^0.15.1",
     "cookie-encrypter": "^0.1.1",
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "^1.4.4",
     "crypto": "^1.0.1",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
